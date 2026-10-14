@@ -1,0 +1,17 @@
+VERIFIED PERFORMANCE RESULT
+
+Benchmark dataset: 6 investments
+Benchmark budget: 100
+Runs: 100
+
+Greedy:
+  Total Cost: 100
+  Total Return: 135
+  Average Time: 0.001267 ms
+
+Dynamic Programming:
+  Total Cost: 100
+  Total Return: 136
+  Average Time: 0.063937 ms
+
+Return Difference (DP - Greedy): 1

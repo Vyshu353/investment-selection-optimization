@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Selection Optimizer</title>
+    <link rel="stylesheet" href="styles.css?v=2" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-mark" aria-hidden="true">IS</div>
+        <div class="brand-copy">
+          <p class="eyebrow">Portfolio lab <span class="live-dot"></span> Local analysis</p>
+          <h1>Investment optimizer</h1>
+          <p class="subtitle">Compare allocation strategies against your budget and return assumptions.</p>
+        </div>
+        <div class="header-note"><span class="note-label">MODEL</span><strong>0/1 knapsack</strong></div>
+      </header>
+
+      <main class="content">
+        <section class="panel control-panel" aria-labelledby="budget-heading">
+          <div class="control-copy">
+            <p class="section-kicker">01 / Set constraints</p>
+            <h2 id="budget-heading">Investment budget</h2>
+            <p>Choose the maximum amount available for this portfolio.</p>
+          </div>
+          <label class="budget-field" for="budget-input">
+            <span>Available capital</span>
+            <div class="currency-wrap">
+              <span aria-hidden="true">&#8377;</span>
+              <input id="budget-input" type="number" min="0" max="1000000" step="1" value="100000" />
+            </div>
+          </label>
+          <div class="control-actions">
+            <button id="reset-btn" class="reset-button" type="button" title="Restore default assumptions">Reset values</button>
+            <button id="calculate-btn" class="run-button" type="button"><span aria-hidden="true">&#9654;</span> Run analysis</button>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Portfolio summary">
+          <article class="metric-tile">
+            <span class="metric-label">Available budget</span>
+            <strong id="metric-budget" class="metric-value">--</strong>
+            <span class="metric-detail">Capital constraint</span>
+          </article>
+          <article class="metric-tile accent-teal">
+            <span class="metric-label">Best expected return</span>
+            <strong id="metric-return" class="metric-value">--</strong>
+            <span id="metric-winner" class="metric-detail">Run analysis to compare</span>
+          </article>
+          <article class="metric-tile accent-gold">
+            <span class="metric-label">Capital deployed</span>
+            <strong id="metric-deployed" class="metric-value">--</strong>
+            <span id="metric-utilization" class="metric-detail">Budget utilization</span>
+          </article>
+          <article class="metric-tile accent-coral">
+            <span class="metric-label">Selected assets</span>
+            <strong id="metric-assets" class="metric-value">--</strong>
+            <span class="metric-detail">In optimized portfolio</span>
+          </article>
+        </section>
+
+        <section class="panel investments-panel" aria-labelledby="opportunities-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">02 / Shape your inputs</p>
+              <h2 id="opportunities-heading">Investment opportunities</h2>
+            </div>
+            <span id="opportunity-count" class="count-badge">6 ASSETS</span>
+          </div>
+          <div class="list-toolbar">
+            <label class="search-field" for="investment-search">
+              <span aria-hidden="true">&#9906;</span>
+              <input id="investment-search" type="search" placeholder="Find an investment" />
+            </label>
+            <label class="sort-field" for="investment-sort">
+              <span>Sort by</span>
+              <select id="investment-sort">
+                <option value="ratio">Return ratio</option>
+                <option value="return">Expected return</option>
+                <option value="cost">Lowest cost</option>
+                <option value="name">Name</option>
+              </select>
+            </label>
+          </div>
+          <div id="investment-list" class="investment-list"></div>
+          <p class="input-note"><span aria-hidden="true">i</span> Edit cost or expected return, then run analysis to compare the updated assumptions.</p>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-heading">
+          <div class="section-heading results-heading">
+            <div>
+              <p class="section-kicker">03 / Compare strategies</p>
+              <h2 id="results-heading">Optimization results</h2>
+            </div>
+            <span id="analysis-status" class="status-pill">Ready to analyze</span>
+          </div>
+          <div id="results" class="results-grid" aria-live="polite"></div>
+        </section>
+      </main>
+      <footer class="page-footer"><span>Investment Selection Optimizer</span><span>Illustrative values for academic use</span></footer>
+    </div>
+
+    <script src="script.js?v=2"></script>
+  </body>
+</html>
